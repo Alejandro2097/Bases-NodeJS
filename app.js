@@ -1,15 +1,21 @@
-const fs = require('fs');
+const { options } = require('yargs');
+const { crearArchivo } = require('./helpers/multiplicar');
+const argv = require('./config/yargs')
+
+
 console.clear();
-console.log("===================")
-console.log("    Tabla del 5")
-console.log("===================")
-const base = 3;
-let salida = '';
-for (let i = 0; i <= 10; i++){
-    salida += `${base} X ${i} = ${base*i}\n`;   
-}
-console.log('salida');
-fs.writeFile(`tabla-${base}.txt`, salida, (err) =>{
-     if(err) throw err;
-     console.log(`tabla-${base}.txt creada satisfactoriamente`)
-})
+
+
+
+crearArchivo(argv.b, argv.l )
+    .then( nombreArchivo => console.log(nombreArchivo, 'creado'))
+   .catch( err => console.log(err));
+
+   // console.log( argv ); 
+// console.log('base: yargs', argv.base);
+
+// const [ , ,arg3 = 'base=5'] = process.argv;
+// const [ , base = 5] = arg3.split('=');
+// console.log( base );
+
+//const base = 3;
