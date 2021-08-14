@@ -18,6 +18,12 @@ const argv = require('yargs')
         demandOption: false,
         describe: 'Muestra la tabla de multiplicar en consola.'
     })
+    .option('h', {
+        alias: 'hasta',
+        type: 'number',
+        default: 10,
+        describe: 'Numero hasta el cual se reproducira la tabla de multiplicar'
+    })
     .argv;
 
 module.exports = argv;
